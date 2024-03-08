@@ -82,7 +82,7 @@ val = data[~mask].copy()
 
 #%%
 movie = movies_data.loc[:,['MovieID','Title']]
-rating = ratings_data.loc[:,['UserID', 'MovieID','Rating']]
+rating = ratings_data.loc[:,['UserID', 'MovieID','Rating','Timestamp']]
 data_merge = pd.merge(movie, rating)
 data_merge = data_merge.iloc[:500000,:]
 # %%
@@ -90,8 +90,8 @@ pivot_table = data_merge.pivot_table(index = ["UserID"], columns = ["Title"], va
 #%%
 # train, test set 
 data_merge['Rating'] = 1
-data_merge['timestamp'] = data_merge['UserID'].index
-data_merge['rank_latest'] = data_merge.groupby(['UserID'])['timestamp'].rank(method = 'first', ascending = False)
+#data_merge['timestamp'] = data_merge['UserID'].index
+data_merge['rank_latest'] = data_merge.groupby(['UserID'])['Timestamp'].rank(method = 'first', ascending = False)
 train_rating = data_merge[data_merge['rank_latest']!=1]
 test_ratings = data_merge[data_merge['rank_latest'] == 1]
 train_rating = train_rating[['UserID', 'MovieID', 'Rating']]
@@ -101,7 +101,6 @@ test_ratings = test_ratings[['UserID','MovieID','Rating']]
 all_rest = data_merge['MovieID'].unique()
 user, items, labels = [],[],[]
 user_item_set = set(zip(train_rating['UserID'], train_rating['MovieID']))
-
 num_negatives = 4
 for (u,i) in tqdm(user_item_set):
     user.append(u)
@@ -121,7 +120,7 @@ labels = np.array(labels)
 
 train_df = pd.DataFrame({'UserID':user, 'MovieID':items, 'labels':labels})
 
-test_df = test_ratings.rename({'Rating':'labels'}, axis = 1)
+test_df = test_ratings.rename({'Rating':'labels'}, axis = 1)####################
 test_df = test_df.reset_index().drop('index', axis=1)
 #%%
 class Rating_Dataset(torch.utils.data.Dataset):
