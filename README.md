@@ -16,7 +16,8 @@ $$\displaystyle DCG_k = \sum_{i=1}^{k} \frac{rel_{i}}{log_2(i+1)}$$
 2. 사용자 별로 k개 아이템을 추천하고, 제외한 아이템이 포함되면 Hit
 3. Hit된 사용자 수 / 전체 사용자 수 = Hit Ratio
 
-#### MRR(Mean reciprocal rank)
+#### MRR(Mean reciprocal rank) (클릭과 같이 0 or 1일때 사용)
+RR : True relavence가 0보다 큰것들 중, 예측한 순위들의 역수가 가장 큰값
 ### Prediction Matric
 #### MAE & MSE
 
