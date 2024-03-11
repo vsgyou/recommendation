@@ -14,73 +14,6 @@ movies_data = pd.read_csv("movies.dat", delimiter = '::', header = None, encodin
 ratings_data = pd.read_csv("ratings.dat", delimiter = '::', header = None, encoding = 'latin1', names = ['UserID','MovieID', 'Rating', 'Timestamp'])
 users_data = pd.read_csv("users.dat", delimiter = '::', header = None, encoding = 'latin1',names=['UserID', 'Gender', 'Age', 'Occupation', 'Zip-code'])
 #%%
-# train, valid 데이터 나누기
-data = ratings_data
-np.random.seed(3)
-mask = np.random.rand(len(data)) < 0.8
-train = data[mask].copy()
-val = data[~mask].copy()
-# #%%
-# def proc_col(col, train_col = None):
-#     if train_col is not None:
-#         uniq = train_col.unique()
-#     else:
-#         uniq = col.unique()
-#     name2idx = {o:i for i,o in enumerate(uniq)}
-#     return name2idx, np.array([name2idx.get(x,-1) for x in col]), len(uniq)
-# # %%
-# def encode_data(df, train = None):
-#     df = df.copy()
-#     for col_name in ["UserID", "MovieID"]:
-#         train_col = None
-#         if train is not None:
-#             train_col = train[col_name]
-#         _,col,_ = proc_col(df[col_name], train_col)
-#         df[col_name] = col
-#         df = df[df[col_name] >= 0]
-#         return df
-# # %%
-# df_train = encode_data(train)
-# df_val = encode_data(val,train)
-# embed = nn.Embedding(10,3)
-# a = torch.LongTensor([[1,2,0,4,5,1]])
-# embed(a)
-# # %%
-# class MF(nn.Module):
-#     def __init__(self, num_users, num_items, emb_size = 100):
-#         super(MF, self).__init__()
-#         self.user_emb = nn.Embedding(num_users, emb_size)
-#         self.item_emb = nn.Embedding(num_items, emb_size)
-#         self.user_emb.weight.data.uniform_(0,0.05)
-#         self.item_emb.weight.data.uniform_(0,0.05)
-
-#     def forward(self,u,v):
-#         u = self.user_emb(u)
-#         v = self.user_emb(v)
-#         return (u*v).sum(1)
-# # %%
-# num_users = len(df_train.UserID.unique())
-# num_items = len(df_train.MovieID.unique())
-# model = MF(num_users, num_items, emb_size = 100)
-# def train_epocs(model, epochs = 10, lr= 0.01, wd = 0.0, unsqueeze = False):
-#     optimizer = torch.optim.Adam(model.parameters(), lr = lr, weight_decay = wd)
-#     model.train()
-#     for i in range(epochs):
-#         users = torch.LongTensor(df_train.UserID.values)
-#         items = torch.LongTemsor(df_train.MovieID.values)
-#         ratings = torch.FloatTensor(df_train.rating.values)
-#         if unsqueeze:
-#             ratings = ratings.unsqueeze(1)
-#         y_hat = model(users, items)
-#         loss = F.mse_loss(y_hat, ratings)
-#         optimizer.zero_grad()
-#         loss.backward()
-#         optimizer.step()
-#         print(loss.item())
-#     test_loss(model, unsqueeze)
-
-
-#%%
 movie = movies_data.loc[:,['MovieID','Title']]
 rating = ratings_data.loc[:,['UserID', 'MovieID','Rating','Timestamp']]
 data_merge = pd.merge(movie, rating)
@@ -209,7 +142,7 @@ optimizer = torch.optim.Adam(model.parameters(), lr = learning_rate)
 size = len(train_dataloader.dataset)
 count, best_hr = 0, 0
 top_k = 10
-writer = SummaryWriter()
+#writer = SummaryWriter()
 
 for epoch in range(10):
     print('#### EPOCH {} ####'.format(epoch + 1))
@@ -224,7 +157,7 @@ for epoch in range(10):
         loss = loss_fn(prediction, label)
         loss.backward()
         optimizer.step()
-        writer.add_scalar("data/loss",loss.item(), count)
+#        writer.add_scalar("data/loss",loss.item(), count)
         count += 1
     model.eval()
     HR, NDCG = matrix(model, test_dataloader, top_k)
@@ -237,7 +170,7 @@ for epoch in range(10):
     print("HR: {:.3f} \tNDCG: {:.3f}".format(np.mean(HR), np.mean(NDCG)))
     if HR > best_hr:
         best_hr, best_ndcg, best_epoch = HR, NDCG, epoch
-writer.flush()
+#writer.flush()
 print(
     "End. Best epoch {:03d}: HR = {:.3f}, NDCG = {:.3f}".format(
         best_epoch, best_hr, best_ndcg
