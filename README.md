@@ -4,6 +4,9 @@
 
 #### Ranking Matric
 #### NDCG(Normalized Discounted Cumulative Gain) : 추천된 Top K개를 추천 순위에 가중치를 두어 평가한다. 
+NDCG : DCG를 정규화 한것
+DCG : relavence의 가중합, 이때 가중치는 내가 예측한 순위의 역수
+
 $$\displaystyle CG_k = \sum_{i=1}^{k} rel_{i}$$
 rel은 사용자가 아이템(i)를 얼마나 선호하는지에 대한 값으로, 보통 평점을 사용
 $$\displaystyle DCG_k = \sum_{i=1}^{k} \frac{rel_{i}}{log_2(i+1)}$$
