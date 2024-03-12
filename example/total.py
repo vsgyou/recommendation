@@ -231,10 +231,6 @@ class NeuMF(nn.Module):
         prediction = self.sigmoid(cat)
         return prediction.squeeze()
 
-
-
-
-
 #%%    
 def ndcg(gt_item, pred_items):
     if gt_item in pred_items:
@@ -254,7 +250,7 @@ def metric(model, test_loader, top_k):
         NDCG.append(ndcg(gt_item, recommends))
     return np.mean(NDCG)
 #%%
-model = NeuMF(num_users = user_num, num_items = item_num, embedding_dim= 64)
+model = NeuMF(num_users = user_num, num_items = item_num, embedding_dim= 32)
 learning_rate = 0.001
 loss_fn = nn.BCELoss()
 optimizer = torch.optim.Adam(model.parameters(), lr = learning_rate)
@@ -278,3 +274,8 @@ for epoch in range(10):
     print("NDCG: {:.3f}".format(np.mean(NDCG)))
 
 # %%
+def count_parameters(model):
+    return sum(p.numel() for p in model.parameters() if p.requires_grad)
+
+# 모델의 파라미터 수 출력
+print("모델의 파라미터 수:", count_parameters(model))
