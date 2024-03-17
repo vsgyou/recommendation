@@ -81,7 +81,7 @@ model = NeuMF(num_users = user_num, num_items = item_num, embedding_dim= 64)
 learning_rate = 0.001
 loss_fn = nn.BCELoss()
 optimizer = torch.optim.Adam(model.parameters(), lr = learning_rate)
-top_k = 13
+top_k = 5
 
 for epoch in range(10):
     print('#### EPOCH {} ####'.format(epoch + 1))
