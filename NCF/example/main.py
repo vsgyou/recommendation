@@ -90,7 +90,8 @@ for epoch in range(10):
         user = user
         item = item
         label = label.float()
-        model.zero_grad()
+        model.zero_grad()-
+        
         prediction = model(user, item)
         loss = loss_fn(prediction, label)
         loss.backward()
