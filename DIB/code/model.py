@@ -6,7 +6,6 @@ import numpy as np
 import pandas as pd
 from tqdm import tqdm
 from scipy.sparse import csr_matrix
-import tensorflow as tf
 import optuna
 #%%
 # NPZ 파일 로드, 복원
@@ -34,15 +33,17 @@ user_idx = torch.tensor(user_idx)
 item_idx = train_data.tocoo().col
 item_idx = torch.tensor(item_idx)
 label = train_data.tocoo().data
-label = torch.tensor(label)
+label = torch.tensor(label).float()
+length = len(user_idx)
+
 
 z_user_embedding = nn.Embedding(num_users, embed_dim)
 c_user_embedding = nn.Embedding(num_users, embed_dim)
-user_zero_vector = torch.nn.Parameter(torch.zeros(num_users, embed_dim), requires_grad = False)
+user_zero_vector = torch.nn.Parameter(torch.zeros(length, embed_dim), requires_grad = False)
 
 z_item_embedding = nn.Embedding(num_items, embed_dim)
 c_item_embedding = nn.Embedding(num_items, embed_dim)
-item_zero_vector = torch.nn.Parameter(torch.zeros(num_items, embed_dim),requires_grad = False)
+item_zero_vector = torch.nn.Parameter(torch.zeros(length, embed_dim),requires_grad = False)
 
 mlp1_weights = nn.Parameter(torch.randn(embed_dim*4, embed_dim*2))
 mlp1_bias = nn.Parameter(torch.zeros(embed_dim*2))
@@ -51,10 +52,10 @@ mlp2_weights = nn.Parameter(torch.rand(embed_dim*2,1))
 #%%
 # forward
 
-z_users = z_user_embedding(torch.unique(user_idx))
+z_users = z_user_embedding((user_idx))
 z_users_embeddings = torch.cat([z_users, user_zero_vector], dim = 1)
 
-z_items = z_item_embedding(torch.unique(item_idx))
+z_items = z_item_embedding((item_idx))
 z_items_embeddings = torch.cat([z_items, item_zero_vector], dim = 1)
 z = torch.cat([z_users_embeddings,z_items_embeddings], axis = 1)
 z_encoded = torch.mm(z, mlp1_weights) + mlp1_bias
