@@ -1,0 +1,45 @@
+{
+    "os": "macOS-10.16-x86_64-i386-64bit",
+    "python": "3.11.2",
+    "heartbeatAt": "2024-03-21T11:25:32.587719",
+    "startedAt": "2024-03-21T11:25:22.047560",
+    "docker": null,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "/Users/jeongjiun/Documents/GitHub/recommendation/InvPref/code/yahoo_implicit_train.py",
+    "codePathLocal": "yahoo_implicit_train.py",
+    "codePath": "InvPref/code/yahoo_implicit_train.py",
+    "git": {
+        "remote": "https://github.com/vsgyou/recommendation.git",
+        "commit": "e0264c71456edd8a17b0516a99b4ea0d07d01d96"
+    },
+    "email": "105686490+vsgyou@users.noreply.github.com",
+    "root": "/Users/jeongjiun/Documents/GitHub/recommendation",
+    "host": "jeongjiun-ui-iMac.local",
+    "username": "jeongjiun",
+    "executable": "/Users/jeongjiun/opt/anaconda3/envs/torch2/bin/python",
+    "cpu_count": 6,
+    "cpu_count_logical": 6,
+    "cpu_freq": {
+        "current": 3000,
+        "min": 3000,
+        "max": 3000
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 3000,
+            "min": 3000,
+            "max": 3000
+        }
+    ],
+    "disk": {
+        "/": {
+            "total": 956.9770622253418,
+            "used": 93.76266479492188
+        }
+    },
+    "memory": {
+        "total": 64.0
+    }
+}

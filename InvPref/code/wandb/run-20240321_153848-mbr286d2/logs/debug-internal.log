@@ -1,0 +1,53 @@
+2024-03-21 15:38:48,279 INFO    StreamThr :52876 [internal.py:wandb_internal():86] W&B internal server running at pid: 52876, started at: 2024-03-21 15:38:48.279259
+2024-03-21 15:38:48,280 DEBUG   HandlerThread:52876 [handler.py:handle_request():146] handle_request: status
+2024-03-21 15:38:48,286 INFO    WriterThread:52876 [datastore.py:open_for_write():87] open: /Users/jeongjiun/Documents/GitHub/recommendation/InvPref/code/wandb/run-20240321_153848-mbr286d2/run-mbr286d2.wandb
+2024-03-21 15:38:48,286 DEBUG   SenderThread:52876 [sender.py:send():382] send: header
+2024-03-21 15:38:48,315 DEBUG   SenderThread:52876 [sender.py:send():382] send: run
+2024-03-21 15:38:48,981 INFO    SenderThread:52876 [dir_watcher.py:__init__():211] watching files in: /Users/jeongjiun/Documents/GitHub/recommendation/InvPref/code/wandb/run-20240321_153848-mbr286d2/files
+2024-03-21 15:38:48,981 INFO    SenderThread:52876 [sender.py:_start_run_threads():1136] run started: mbr286d2 with start time 1711003128.2812
+2024-03-21 15:38:48,987 DEBUG   HandlerThread:52876 [handler.py:handle_request():146] handle_request: check_version
+2024-03-21 15:38:48,988 DEBUG   SenderThread:52876 [sender.py:send_request():409] send_request: check_version
+2024-03-21 15:38:49,088 DEBUG   HandlerThread:52876 [handler.py:handle_request():146] handle_request: run_start
+2024-03-21 15:38:49,102 DEBUG   HandlerThread:52876 [system_info.py:__init__():27] System info init
+2024-03-21 15:38:49,102 DEBUG   HandlerThread:52876 [system_info.py:__init__():42] System info init done
+2024-03-21 15:38:49,102 INFO    HandlerThread:52876 [system_monitor.py:start():194] Starting system monitor
+2024-03-21 15:38:49,102 INFO    SystemMonitor:52876 [system_monitor.py:_start():158] Starting system asset monitoring threads
+2024-03-21 15:38:49,103 INFO    HandlerThread:52876 [system_monitor.py:probe():214] Collecting system info
+2024-03-21 15:38:49,103 INFO    SystemMonitor:52876 [interfaces.py:start():190] Started cpu monitoring
+2024-03-21 15:38:49,103 DEBUG   HandlerThread:52876 [system_info.py:probe():151] Probing system
+2024-03-21 15:38:49,106 INFO    SystemMonitor:52876 [interfaces.py:start():190] Started disk monitoring
+2024-03-21 15:38:49,106 INFO    SystemMonitor:52876 [interfaces.py:start():190] Started memory monitoring
+2024-03-21 15:38:49,107 INFO    SystemMonitor:52876 [interfaces.py:start():190] Started network monitoring
+2024-03-21 15:38:49,112 DEBUG   HandlerThread:52876 [system_info.py:_probe_git():136] Probing git
+2024-03-21 15:38:49,135 DEBUG   HandlerThread:52876 [system_info.py:_probe_git():144] Probing git done
+2024-03-21 15:38:49,135 DEBUG   HandlerThread:52876 [system_info.py:probe():199] Probing system done
+2024-03-21 15:38:49,135 DEBUG   HandlerThread:52876 [system_monitor.py:probe():223] {'os': 'macOS-10.16-x86_64-i386-64bit', 'python': '3.11.2', 'heartbeatAt': '2024-03-21T06:38:49.104005', 'startedAt': '2024-03-21T06:38:48.273522', 'docker': None, 'cuda': None, 'args': (), 'state': 'running', 'program': '/Users/jeongjiun/Documents/GitHub/recommendation/InvPref/code/yahoo_implicit_train.py', 'codePathLocal': 'yahoo_implicit_train.py', 'codePath': 'InvPref/code/yahoo_implicit_train.py', 'git': {'remote': 'https://github.com/vsgyou/recommendation.git', 'commit': 'e0264c71456edd8a17b0516a99b4ea0d07d01d96'}, 'email': '105686490+vsgyou@users.noreply.github.com', 'root': '/Users/jeongjiun/Documents/GitHub/recommendation', 'host': 'jeongjiun-ui-iMac.local', 'username': 'jeongjiun', 'executable': '/Users/jeongjiun/opt/anaconda3/envs/torch2/bin/python', 'cpu_count': 6, 'cpu_count_logical': 6, 'cpu_freq': {'current': 3000, 'min': 3000, 'max': 3000}, 'cpu_freq_per_core': [{'current': 3000, 'min': 3000, 'max': 3000}], 'disk': {'/': {'total': 956.9770622253418, 'used': 93.7033805847168}}, 'memory': {'total': 64.0}}
+2024-03-21 15:38:49,135 INFO    HandlerThread:52876 [system_monitor.py:probe():224] Finished collecting system info
+2024-03-21 15:38:49,135 INFO    HandlerThread:52876 [system_monitor.py:probe():227] Publishing system info
+2024-03-21 15:38:49,135 DEBUG   HandlerThread:52876 [system_info.py:_save_conda():208] Saving list of conda packages installed into the current environment
+2024-03-21 15:38:49,988 INFO    Thread-12 :52876 [dir_watcher.py:_on_file_created():271] file/dir created: /Users/jeongjiun/Documents/GitHub/recommendation/InvPref/code/wandb/run-20240321_153848-mbr286d2/files/conda-environment.yaml
+2024-03-21 15:39:02,760 DEBUG   HandlerThread:52876 [system_info.py:_save_conda():220] Saving conda packages done
+2024-03-21 15:39:02,761 INFO    HandlerThread:52876 [system_monitor.py:probe():229] Finished publishing system info
+2024-03-21 15:39:02,818 DEBUG   HandlerThread:52876 [handler.py:handle_request():146] handle_request: status_report
+2024-03-21 15:39:02,819 DEBUG   HandlerThread:52876 [handler.py:handle_request():146] handle_request: status_report
+2024-03-21 15:39:02,819 DEBUG   SenderThread:52876 [sender.py:send():382] send: files
+2024-03-21 15:39:02,819 INFO    SenderThread:52876 [sender.py:_save_file():1403] saving file wandb-metadata.json with policy now
+2024-03-21 15:39:03,016 INFO    Thread-12 :52876 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/jeongjiun/Documents/GitHub/recommendation/InvPref/code/wandb/run-20240321_153848-mbr286d2/files/conda-environment.yaml
+2024-03-21 15:39:03,016 INFO    Thread-12 :52876 [dir_watcher.py:_on_file_created():271] file/dir created: /Users/jeongjiun/Documents/GitHub/recommendation/InvPref/code/wandb/run-20240321_153848-mbr286d2/files/wandb-metadata.json
+2024-03-21 15:39:03,694 INFO    wandb-upload_0:52876 [upload_job.py:push():131] Uploaded file /var/folders/c_/lyvzmwmj1_zf_lq72hf6r53c0000gn/T/tmp8l6ep43twandb/ncimxi8i-wandb-metadata.json
+2024-03-21 15:39:04,821 DEBUG   HandlerThread:52876 [handler.py:handle_request():146] handle_request: status_report
+2024-03-21 15:39:09,828 DEBUG   HandlerThread:52876 [handler.py:handle_request():146] handle_request: status_report
+2024-03-21 15:39:14,839 DEBUG   HandlerThread:52876 [handler.py:handle_request():146] handle_request: status_report
+2024-03-21 15:39:19,845 DEBUG   HandlerThread:52876 [handler.py:handle_request():146] handle_request: status_report
+2024-03-21 15:39:24,846 DEBUG   HandlerThread:52876 [handler.py:handle_request():146] handle_request: status_report
+2024-03-21 15:39:29,862 DEBUG   HandlerThread:52876 [handler.py:handle_request():146] handle_request: status_report
+2024-03-21 15:39:34,868 DEBUG   HandlerThread:52876 [handler.py:handle_request():146] handle_request: status_report
+2024-03-21 15:39:39,886 DEBUG   HandlerThread:52876 [handler.py:handle_request():146] handle_request: status_report
+2024-03-21 15:39:44,897 DEBUG   HandlerThread:52876 [handler.py:handle_request():146] handle_request: status_report
+2024-03-21 15:39:49,111 DEBUG   SystemMonitor:52876 [system_monitor.py:_start():172] Starting system metrics aggregation loop
+2024-03-21 15:39:49,111 DEBUG   SenderThread:52876 [sender.py:send():382] send: stats
+2024-03-21 15:39:50,112 DEBUG   HandlerThread:52876 [handler.py:handle_request():146] handle_request: status_report
+2024-03-21 15:39:55,122 DEBUG   HandlerThread:52876 [handler.py:handle_request():146] handle_request: status_report
+2024-03-21 15:40:00,140 DEBUG   HandlerThread:52876 [handler.py:handle_request():146] handle_request: status_report
+2024-03-21 15:40:05,141 DEBUG   HandlerThread:52876 [handler.py:handle_request():146] handle_request: status_report
+2024-03-21 15:40:10,150 DEBUG   HandlerThread:52876 [handler.py:handle_request():146] handle_request: status_report
