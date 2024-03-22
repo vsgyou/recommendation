@@ -14863,6 +14863,7 @@
 2024-03-21 21:16:20,234 DEBUG   SystemMonitor:9145 [system_monitor.py:_start():183] Publishing last batch of metrics
 2024-03-21 21:16:20,234 INFO    HandlerThread:9145 [interfaces.py:finish():202] Joined network monitor
 2024-03-21 21:16:20,234 DEBUG   SenderThread:9145 [sender.py:send():382] send: stats
+2024-03-21 21:16:21,235 DEBUG   HandlerThread:9145 [handler.py:handle_request():146] handle_request: status_report
 2024-03-21 21:16:21,561 INFO    Thread-61 :9145 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/jeongjiun/Documents/GitHub/recommendation/InvPref/code/wandb/run-20240321_210301-94x0mhr9/files/output.log
 2024-03-21 21:16:21,657 DEBUG   HandlerThread:9145 [handler.py:handle_request():146] handle_request: internal_messages
 2024-03-21 21:16:21,657 DEBUG   HandlerThread:9145 [handler.py:handle_request():146] handle_request: stop_status
