@@ -117,7 +117,7 @@ reg_env_embed = False
 
 # train_config
 batch_size = 8192
-epochs = 100
+epochs = 1000
 cluster_interval = 5
 evaluate_interval = 10
 lr = 0.005
@@ -162,7 +162,7 @@ wandb_var = wandb.init(project = "drs",
                            "reg_only_embed" : True,
                            "reg_env_embed" : False,
                            "batch_size" : 8192,
-                           "epochs" : 100,
+                           "epochs" : 1000,
                            "cluster_interval" : 5,
                            "evaluate_interval" : 10,
                            "lr" : 0.005,
