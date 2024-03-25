@@ -63,7 +63,22 @@ class InvPrefExplicit(nn.Module):
         env_outputs: torch.Tensor = self.env_classifier(reverse_invariant_preferences)
         
         return invariant_score.reshape(-1), env_aware_score.reshape(-1), env_outputs.reshape(-1, self.env_num)
-        
+
+    def get_users_reg(self, users_id, norm: int):
+        invariant_embed_gmf: torch.Tensor = self.embed_user_invariant(users_id)
+        env_aware_embed_gmf: torch.Tensor = self.embed_user_env_aware(users_id)
+        if norm == 2:
+            reg_loss: torch.Tensor = \
+                (env_aware_embed_gmf.norm(2).pow(2) + invariant_embed_gmf.norm(2).pow(2)) \
+                / (float(len(users_id)) * float(self.factor_num) * 2)
+        elif norm == 1:
+            reg_loss: torch.Tensor = \
+                (env_aware_embed_gmf.norm(1) + invariant_embed_gmf.norm(1)) \
+                / (float(len(users_id)) * float(self.factor_num) * 2)
+        else:
+            raise KeyError('norm must be 1 or 2 !!! wdnmd !!')
+        return reg_loss
+
     def get_items_reg(self, items_id, norm: int):
         invariant_embed_gmf: torch.Tensor = self.embed_item_invariant(items_id)
         env_aware_embed_gmf: torch.Tensor = self.embed_item_env_aware(items_id)
