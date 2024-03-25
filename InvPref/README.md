@@ -24,3 +24,9 @@ As a result, we can directly use it as the agents of confounders
 >- Propose to generate environments with a clustering algorithm based on $p_{e}(y|u,v)$, given a $(u,v)$ pair, we infer its feedback $\hat{y}_{u,v,e}$ under each environment $e$ and select the environment $\hat{e}_{u,v}$ corresponding to the result closest to $y_{u,v}$, which is the true feedback of $(u,v)$
 #### Invariant Preference Learning
 >- Given the learned envireonments, we capture invariant and variant preference via adversarial learning. we use different embedings to capture the invariant preference, variant preference and latent environments respectively. To learn discriminative and invariant true user preference across multiple environments, InvPref jointly optimizes the recommendation task and an environment classifier which is only used in the trining phase.
+
+## Invariant Preference Learning
+>- $m_{u,v} = s_{u}^{inv} \odot t_{v}^{inv}$ : invariant embeddings of user and item
+>- $y_{u,v}^{m} = \phi_{r}(m_{u,v})$ : 
+characterizes the invariant interaction between the user and item
+>- $\phi_{r}(x) = x^T1_{L}$ for explicit feedback; $Sigmoid(x^T1_{L})$ for implicit feedback;

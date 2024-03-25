@@ -55,9 +55,9 @@ class InvPrefExplicit(nn.Module):
         invariant_preferences: torch.Tensor = users_embed_invariant * items_embed_invariant # m_u,v
         env_aware_preferences: torch.Tensor = users_embed_env_aware * items_embed_env_aware * envs_embed # a_u,v,e
         
-        invariant_score: torch.Tensor = torch.sum(invariant_preferences, dim = 1)
-        env_aware_mid_score: torch.Tensor = torch.sum(env_aware_preferences, dim = 1)
-        env_aware_score: torch.Tensor = invariant_score + env_aware_mid_score
+        invariant_score: torch.Tensor = torch.sum(invariant_preferences, dim = 1) # x1_L
+        env_aware_mid_score: torch.Tensor = torch.sum(env_aware_preferences, dim = 1) # x1_L
+        env_aware_score: torch.Tensor = invariant_score + env_aware_mid_score # hat{y}_{u,v,e}
         
         reverse_invariant_preferences: torch.Tensor = ReverseLayerF.apply(invariant_preferences, alpha)
         env_outputs: torch.Tensor = self.env_classifier(reverse_invariant_preferences)
@@ -301,3 +301,13 @@ class InvPrefImplicit(nn.Module):
         _, env_aware_score, _ = self.forward(users_id, items_id, envs_id, 0.)
         return env_aware_score
 # %%
+
+
+# 환경 분류기 생성
+classifier = LinearLogSoftMaxEnvClassifier(factor_dim=100, env_num=2)
+
+# 불변한 사용자 선호도 입력 데이터 생성
+invariant_preferences = torch.randn(10, 100)  # 배치 크기: 32, 특징 차원: 100
+# 환경 분류 실행
+output = classifier(invariant_preferences)
+print(output.shape)  # 출력: torch.Size([32, 5])
