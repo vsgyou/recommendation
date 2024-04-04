@@ -7,11 +7,12 @@ import torch.nn.functional as F
 import time
 from tqdm import tqdm
 from torch.utils.data import DataLoader, Dataset
-from torch.utils.tensorboard import SummaryWriter
+# from torch.utils.tensorboard import SummaryWriter
 
 # %%
 movies_data = pd.read_csv("movies.dat", delimiter = '::', header = None, encoding='latin1', names = ['MovieID', 'Title', 'Genres'])
-ratings_data = pd.read_csv("ratings.dat", delimiter = '::', header = None, encoding = 'latin1', names = ['UserID','MovieID', 'Rating', 'Timestamp'])
+ratings_data = pd.read_csv("ratings.dat", delimiter = '::', header = None, encoding = 'latin1', names = ['User','Item', 'Rating', 'Timestamp'])
+ratings_data[['User','Item','Rating']]
 users_data = pd.read_csv("users.dat", delimiter = '::', header = None, encoding = 'latin1',names=['UserID', 'Gender', 'Age', 'Occupation', 'Zip-code'])
 #%%
 movie = movies_data.loc[:,['MovieID','Title']]
